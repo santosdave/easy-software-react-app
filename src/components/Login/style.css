@@ -1,0 +1,63 @@
+.login_container{
+    height: 100vh;
+    display: flex;
+    place-items: center;
+	justify-content: center;
+	background-color: #6366f1;
+}
+.login_area{
+    background-color: #f1faee;
+    align-items: center;
+	text-align: center;
+	padding: 5rem 3rem;
+	width: 20rem;
+	min-height: 15rem;
+	border-radius: 0.75rem;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.login_area>h1{
+    margin: 0; 
+    text-align: center;
+}
+.login_area>p{
+    margin: 0;
+    color: gray;
+	font-weight: 600;
+}
+.login_area>form{
+    display: flex;
+	flex-flow: row wrap;
+    margin-top: 2rem;
+}
+.login_area>form input{
+    margin: 0.4rem 0;
+    width: calc(100% - 2rem);
+}.login_area>form p{
+    margin: 1rem auto;
+	font-size: 0.9rem;
+}
+.login_btn{
+    margin: 0.4rem 0;
+    width: calc(100% - 2rem);
+}
+.signup_link{
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+	-webkit-transition: .25s ease-out;
+	-moz-transition: .25s ease-out;
+	-ms-transition: .25s ease-out;
+	-o-transition: .25s ease-out;
+	transition: .25s ease-out;
+}
+.signup_link:hover{
+    color:#6366f1;
+}
+
+input,
+textarea {
+	border-radius: 0.75rem;
+	padding: 0.8rem;
+	border: 1px solid #dadada;
+	outline: none;
+}
