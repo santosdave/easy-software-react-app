@@ -1,4 +1,4 @@
-[
+ const data=[
     {
         "id": "3",
         "createdAt": "2020-10-18T20:01:51.051Z",
@@ -598,3 +598,4 @@
         "studentId": "18m"
     }
 ]
+export default data

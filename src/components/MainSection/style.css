@@ -63,8 +63,8 @@
     margin-left: auto;
     margin-right: auto;
 }
-.user_grid{
-    flex: grow 1;
-    display:flex;
-    flex-direction:row;
+.pagination{
+    background-color:whitesmoke;
+    border-radius:0.75rem;
+    float:right;
 }

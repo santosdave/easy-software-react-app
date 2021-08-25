@@ -10,10 +10,23 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IconButton } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
+import TablePagination from '@material-ui/core/TablePagination';
 import "./style.css";
 import UserSection from '../UserSection';
-
+import data from "../../data";
+const userData=data.sort((a,b)=> parseFloat(a.createdAT) - parseFloat(b.createdAT));
 function MainSection() {
+    const [page, setPage] = React.useState(2);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
     return (
         <div className="main_section">
             <div className="profile_section">
@@ -63,18 +76,30 @@ function MainSection() {
                 </Card>
             </div>
             <Grid container className={"user_grid"} spacing={2}>
-                    <Grid item xs={12}>
+                    <Grid  item xs={12}>
                         <Grid container justifyContent="center" spacing={1}>
-                            {[0, 1, 2,3,4,5,6,7,8,9,10].map((value) => (
-                                <Grid key={value} item>
-                                    <UserSection/>  
+                            {userData.map((item) => (
+                                <Grid key={item.id} item>
+                                    <UserSection   name={item.name} date={item.createdAt} src={item.avatar} username={item.username} email={item.email}/>  
                                 </Grid>
                             ))}
                             
                         </Grid>
 
                     </Grid>
+                    <div className={"pagination"}>
+                        <TablePagination
+                        component={"div"}
+                        count={100}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        rowsPerPage={rowsPerPage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </div>
+                    
             </Grid>
+           
             {/* <div className="users_section">
                 <UserSection/>
                 <div>
