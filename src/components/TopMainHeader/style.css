@@ -1,7 +1,7 @@
 .top_header{
     display: flex;
     margin: 0;
-    top: 0;
+    top: 0px;
     position:sticky;
     z-index: 50;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -18,7 +18,7 @@
     display: flex;
     justify-content:space-between;
      align-items: center;
-   
+    
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
 }

@@ -9,10 +9,13 @@ import EditIcon from '@material-ui/icons/Edit';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IconButton } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 import "./style.css";
+import UserSection from '../UserSection';
+
 function MainSection() {
     return (
-        <div className="main-section">
+        <div className="main_section">
             <div className="profile_section">
                
                 <Card className="profile_card">
@@ -59,6 +62,34 @@ function MainSection() {
                     </CardActions>
                 </Card>
             </div>
+            <Grid container className={"user_grid"} spacing={2}>
+                    <Grid item xs={12}>
+                        <Grid container justifyContent="center" spacing={1}>
+                            {[0, 1, 2,3,4,5,6,7,8,9,10].map((value) => (
+                                <Grid key={value} item>
+                                    <UserSection/>  
+                                </Grid>
+                            ))}
+                            
+                        </Grid>
+
+                    </Grid>
+            </Grid>
+            {/* <div className="users_section">
+                <UserSection/>
+                <div>
+                     
+                </div>
+                <div>
+                   
+                </div>
+                <div>
+                    <UserSection/>  
+                </div>
+                <div>
+                    <UserSection/>  
+                </div>
+            </div> */}
         </div>
     )
 }
