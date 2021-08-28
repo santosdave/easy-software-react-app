@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import { IconButton } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
@@ -80,7 +81,7 @@ function MainSection() {
                         <Grid container justifyContent="center" spacing={1}>
                             {userData.map((item) => (
                                 <Grid key={item.id} item>
-                                    <UserSection   name={item.name} date={item.createdAt} src={item.avatar} username={item.username} email={item.email}/>  
+                                    <UserSection   name={item.name} phonenumber={item.phoneNumber} date={item.createdAt} src={item.avatar} username={item.username} email={item.email}/>  
                                 </Grid>
                             ))}
                             

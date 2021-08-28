@@ -19,10 +19,14 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
+import { useHistory } from 'react-router-dom';
 import "./style.css";
 function TopMainHeader() {
     const [anchorEl, setAnchorEl]=useState(null)
-    
+    const history = useHistory();
+    const goToLogin = async () => {
+		history.push('/login');
+	};
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
@@ -84,7 +88,7 @@ function TopMainHeader() {
                                             <span > Settings </span>
                                         </div>
                                         <div>
-                                            <IconButton>
+                                            <IconButton  onClick={goToLogin}>
                                                 <PowerSettingsNewIcon/>
                                             </IconButton>
                                             <span > Logout </span>
