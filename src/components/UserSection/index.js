@@ -2,8 +2,11 @@ import React,{useState} from 'react';
 import {Avatar,IconButton, Button, Divider} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PersonIcon from '@material-ui/icons/Person';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
 import EditIcon from '@material-ui/icons/Edit';
 import ChatIcon from '@material-ui/icons/Chat';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { parseISO, differenceInCalendarDays, format, formatDistanceToNow } from 'date-fns';
 import "./style.css";
 import Popper from '@material-ui/core/Popper';
@@ -21,8 +24,8 @@ function rand() {
   }
   
   function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
+    const top = 60 + rand();
+    const left = 60 + rand();
   
     return {
       top: `${top}%`,
@@ -34,6 +37,7 @@ function rand() {
 function UserSection({name,username,date,src,phonenumber,email}) {
     const [anchorEl, setAnchorEl]=useState(null)
     const [modalOpen, setModalOpen]= useState(false);
+    const [modal1Open, setModal1Open]= useState(false);
     const [modalStyle]= useState(getModalStyle);
     
     const handleClick = (event) => {
@@ -49,6 +53,17 @@ function UserSection({name,username,date,src,phonenumber,email}) {
       const handleClose = () => {
         setModalOpen(false);
       };
+
+    const handleOpen1 = () => {
+    setModal1Open(true);
+    };
+
+    const handleClose1 = () => {
+    setModal1Open(false);
+    };
+  
+
+
     
     const formatDate = (date) => {
 		return differenceInCalendarDays(new Date(), date) > 2
@@ -67,7 +82,7 @@ function UserSection({name,username,date,src,phonenumber,email}) {
                 <div className="">
                 <Card className="user_details_top">
                     <CardActionArea>
-                        <CardMedia className="profile_image" title="Profile Image" image='https://media-exp3.licdn.com/dms/image/C4D03AQFaYwtIZ5k53g/profile-displayphoto-shrink_800_800/0/1622195469007?e=1632355200&v=beta&t=24cvGNubyys3-JrSg5kB9FYqbRV4dOeGOH5T5MmdD-0'/>
+                        <CardMedia className="profile_image" title={username} image={src}/>
                         <CardContent className="profile_content">
                             <h2>{username}</h2>
                             <h4>Software Engineer intern</h4>
@@ -88,11 +103,6 @@ function UserSection({name,username,date,src,phonenumber,email}) {
                             </div>
                             <Divider/>
                             <div className="profile_details">
-                                <h2>State/Region</h2>
-                                <h4>Kiambu</h4>
-                            </div>
-                            <Divider/>
-                            <div className="profile_details">
                                 <h2>Address</h2>
                                 <h4>Ruiru</h4>
                             </div>
@@ -100,7 +110,7 @@ function UserSection({name,username,date,src,phonenumber,email}) {
                         </CardContent>
                     </CardActionArea>
                     <CardActions className="profile_details_icons">
-                        <IconButton>
+                        <IconButton onClick={handleOpen1}>
                             <EditIcon color="primary"/>
                         </IconButton>
                         <IconButton>
@@ -143,9 +153,9 @@ function UserSection({name,username,date,src,phonenumber,email}) {
                                     <span > Chat Now </span>
                                 </div>
                                 <div>
-                                    <IconButton>
+                                    <IconButton onClick={handleOpen1}>
                                         <EditIcon/>
-                                    </IconButton>
+                                    </IconButton >
                                     <span > Edit Profile</span>
                                 </div>
                             </div>
@@ -166,7 +176,57 @@ function UserSection({name,username,date,src,phonenumber,email}) {
             <div>
                 <p>{formatDate(parseISO(date))}</p>
             </div>
-            
+            <Modal
+        open={modal1Open}
+        onClose={handleClose1}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+       <div style={modalStyle} className="modal_container1">
+                <div className="">
+                <Card className="user_details_top">
+                    <CardActionArea>
+                        <CardMedia className="profile_image" title={username} image={src}/>
+                        <CardContent className="profile_content">
+                            <h2>{username}</h2>
+                           
+                            <Divider/>
+                            <div className="profile_details1">
+                                < PersonIcon />
+                                <input type="text" placeholder={name}/>
+                            </div>
+                            <div className="profile_details1">
+                                < EmailIcon/>
+                                <input type="email" placeholder={email}/>
+                            </div>
+                            <Divider/>
+                            <div className="profile_details1">
+                                <PhoneIcon/>
+                                <input type="text" placeholder={phonenumber}/>
+                            </div>
+                            <Divider/>
+                            <div className="profile_details1">
+                                <h2>Country</h2>
+                                <h4>Kenya</h4>
+                            </div>
+                            <Divider/>
+                            <div className="profile_details1">
+                                <h2>Address</h2>
+                                <h4>Ruiru</h4>
+                            </div>
+                            
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions className="profile_details_icons">
+                        <IconButton onClick={handleClose1}>
+                            <ArrowForwardIosIcon color="primary"/>
+                        </IconButton>
+                        
+                    </CardActions>
+                </Card>
+                </div>
+       </div>
+      </Modal>
             
         </div>
     )
